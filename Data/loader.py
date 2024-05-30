@@ -63,5 +63,5 @@ def make_db(urls, pdf):
     db.merge_from(pdf_db)
     db.save_local("embedded_knowledge_base")
 
-make_db("Data/urls.txt", "Data/Warranty.pdf")
-    
+if __name__ == "__main__":
+    make_db("Data/urls.txt", "Data/Warranty.pdf")
