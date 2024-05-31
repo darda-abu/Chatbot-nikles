@@ -46,7 +46,6 @@ def load_db(host, user, password, database, table):
 
 
 def make_db(urls, pdf,db_creds):
-    # db = load_db('127.0.0.1', 'root', '', 'products', 'cb_products')
     db = load_db(db_creds.host, db_creds.user, db_creds.password, db_creds.database, db_creds.table)
     url_db = load_urls(urls)
     pdf_db = load_pdf(pdf)
@@ -55,8 +54,6 @@ def make_db(urls, pdf,db_creds):
     db.save_local("Data/embedded_knowledge_base")
     pkl = db.serialize_to_bytes()
     pkl.save("Data/knoiwledge_base_serials.pkl")
-
-
 
 
 if __name__ == "__main__":
@@ -69,6 +66,5 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--database", help = "Database", default="products")
     parser.add_argument("-t", "--table", help = "Table", default="cb_products")
     args = parser.parse_args()
-    # print(args)
     db_creds = database(args.host, args.user, args.password, args.database, args.table)
     make_db("Data/urls.txt", "Data/Warranty.pdf",db_creds)
