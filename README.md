@@ -1,10 +1,13 @@
-# Chatbot-nikles
-To update data
+# Chatbot
+## To run the backend
+```bash
+uvicorn app.main:app
+```
+## To update database/ urls/ warranty
 ```bash
 python Data/loader.py
 ```
-default values are 
-he following table outlines the default values for the arguments specified in the code:
+The following table outlines the default values for the arguments specified in the code:
 
 | Argument | Flag | Description | Default Value |
 |----------|------|-------------|---------------|
