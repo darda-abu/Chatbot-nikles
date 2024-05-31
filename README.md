@@ -1,7 +1,13 @@
-# Chatbot
+# Conversational Chatbot
+![image](https://github.com/darda-abu/Chatbot-nikles/assets/167751588/7b8ec20d-da54-48bf-9b1e-a6ede5d97efb)
 ## To run the backend
 ```bash
-uvicorn app.main:app
+uvicorn app.main:app --reload
+```
+## To run the frontend
+Make sure backend is running
+```bash
+streamlit run frontend/app.py
 ```
 ## To update database/ urls/ warranty
 ```bash
