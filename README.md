@@ -1,19 +1,41 @@
 # Conversational Chatbot
 ![image](https://github.com/darda-abu/Chatbot-nikles/assets/167751588/7b8ec20d-da54-48bf-9b1e-a6ede5d97efb)
-## To run the backend
+## Overview
+
+Welcome to the Conversational Chatbot project! This repository contains the code and resources needed to deploy a fully functional chatbot application. The project is split into two main components: a backend server and a frontend interface.
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have Python installed on your machine. This project also requires several Python packages, which are listed in the [requirements.txt](requirements.txt) file.
+
+### Installation
+
+To install the necessary dependencies, run the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Running the Application
+
+### Backend
+To start the backend server, execute the following command:
 ```bash
 uvicorn app.main:app --reload
 ```
-## To run the frontend
-Make sure backend is running
+## Frontend
+Ensure the backend server is running before starting the frontend. Then, run:
 ```bash
 streamlit run frontend/app.py
 ```
-## To update database/ urls/ warranty
+## Updating the Database/URLs/Warranty Information
+To update the database, URLs, or warranty information, use the following command:
 ```bash
 python Data/loader.py
 ```
-The following table outlines the default values for the arguments specified in the code:
+The [loader.py](Data/loader.py) script accepts several arguments to specify paths and credentials. The following table outlines the default values for these arguments:
 
 | Argument | Flag | Description | Default Value |
 |----------|------|-------------|---------------|
@@ -36,5 +58,4 @@ In order to load the `products` database it has to contain these columns.
 - **category_names**
 - **category_label**
 - **tag_names**
-
 
