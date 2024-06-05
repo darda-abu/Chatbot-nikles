@@ -7,7 +7,7 @@ from langchain_community.document_loaders import PyPDFLoader
 import mysql.connector
 import pandas as pd
 import argparse
-from models import database
+# from models import database
 
 def get_urls(file):
         f = open(file,'r').read()
@@ -45,26 +45,34 @@ def load_db(host, user, password, database, table):
     return split_embed_save(loader)
 
 
-def make_db(urls, pdf,db_creds):
-    db = load_db(db_creds.host, db_creds.user, db_creds.password, db_creds.database, db_creds.table)
+def make_db(urls, pdf):
+    # db = load_db(db_creds.host, db_creds.user, db_creds.password, db_creds.database, db_creds.table)
+    # url_db = load_urls(urls)
+    # pdf_db = load_pdf(pdf)
+    # db.merge_from(url_db)
+    # db.merge_from(pdf_db)
+    # db.save_local("Data/embedded_knowledge_base")
+    # pkl = db.serialize_to_bytes()
+    # pkl.save("Data/knoiwledge_base_serials.pkl")
+
     url_db = load_urls(urls)
+    db = url_db
     pdf_db = load_pdf(pdf)
-    db.merge_from(url_db)
     db.merge_from(pdf_db)
     db.save_local("Data/embedded_knowledge_base")
-    pkl = db.serialize_to_bytes()
-    pkl.save("Data/knoiwledge_base_serials.pkl")
+    # pkl = db.serialize_to_bytes()
+    # pkl.save("Data/knowledge_base_serials")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-u", "--url", help = "Urls Path", default="Data/urls.txt")
-    parser.add_argument("-p", "--pdf", help = "Pdf Path", default="Data/Warranty.pdf")
-    parser.add_argument("-ht", "--host", help = "Host", default="127.0.0.1")
-    parser.add_argument("-n", "--user", help = "User", default="root")
-    parser.add_argument("-ps", "--password", help = "Password", default="")
-    parser.add_argument("-d", "--database", help = "Database", default="products")
-    parser.add_argument("-t", "--table", help = "Table", default="cb_products")
-    args = parser.parse_args()
-    db_creds = database(args.host, args.user, args.password, args.database, args.table)
-    make_db("Data/urls.txt", "Data/Warranty.pdf",db_creds)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("-u", "--url", help = "Urls Path", default="Data/urls.txt")
+    # parser.add_argument("-p", "--pdf", help = "Pdf Path", default="Data/Warranty.pdf")
+    # parser.add_argument("-ht", "--host", help = "Host", default="127.0.0.1")
+    # parser.add_argument("-n", "--user", help = "User", default="root")
+    # parser.add_argument("-ps", "--password", help = "Password", default="")
+    # parser.add_argument("-d", "--database", help = "Database", default="products")
+    # parser.add_argument("-t", "--table", help = "Table", default="cb_products")
+    # args = parser.parse_args()
+    # db_creds = database(args.host, args.user, args.password, args.database, args.table)
+    make_db("Data/urls.txt", "Data/Warranty.pdf")

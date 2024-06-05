@@ -26,9 +26,11 @@ os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
 
 
 def initiate():
-    with open('Data/db.pkl','rb') as f: pkl = pickle.load(f)
+    # with open('Data/db.pkl','rb') as f: pkl = pickle.load(f)
     
-    vectorstore = FAISS.deserialize_from_bytes(serialized=pkl, embeddings=OpenAIEmbeddings())
+    # vectorstore = FAISS.deserialize_from_bytes(serialized=pkl, embeddings=OpenAIEmbeddings())
+    vectorstore = FAISS.load_local("app/embedded_knowledge_base",embeddings=OpenAIEmbeddings(), allow_dangerous_deserialization=True)
+
     retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 6})
     llm=ChatOpenAI(model="gpt-3.5-turbo")
 

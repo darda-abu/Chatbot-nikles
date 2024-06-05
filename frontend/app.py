@@ -1,70 +1,7 @@
 import streamlit as st
 import requests
 import json
-# Define the backend API URL
-# BACKEND_URL = "http://localhost:8000/chatbot/"
 
-# def send_input_to_backend(input_text):
-#     response = requests.post(BACKEND_URL, json={"input_text": input_text})
-#     if response.status_code == 200:
-#         return response.json()["response"]
-#     else:
-#         return "Error: Unable to connect to the chatbot backend."
-
-
-# def main():
-#     st.title("Chatbot")
-
-#     input_text = st.text_input("Enter your message:")
-#     if st.button("Send"):
-#         print(input_text)
-#         if input_text:
-#             output_text = send_input_to_backend(input_text)
-#             st.text(output_text)
-
-# if __name__ == "__main__":
-#     main()
-
-# import streamlit as st
-# from datetime import datetime
-
-# # Function to display messages
-# def display_messages(messages):
-#     for msg in messages:
-#         st.write(f"{msg['timestamp']} - **{msg['user']}**: {msg['message']}")
-
-# # Initialize session state for messages if it doesn't exist
-# if 'messages' not in st.session_state:
-#     st.session_state.messages = []
-
-# # Streamlit app layout
-# st.title("Messenger Interface")
-
-# # Message display area
-# st.subheader("Chat")
-# display_messages(st.session_state.messages)
-
-# # Input for new message
-# st.subheader("Send a message")
-# with st.form(key='message_form'):
-#     user = st.text_input("Your name", key='name')
-#     message = st.text_area("Your message", key='message')
-#     send_button = st.form_submit_button(label='Send')
-
-#     if send_button and user and message:
-#         # Add new message to session state
-#         new_message = {
-#             'user': user,
-#             'message': message,
-#             'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-#         }
-#         st.session_state.messages.append(new_message)
-#         st.experimental_rerun()  # Refresh to display the new message
-
-# # Reset chat button
-# if st.button("Reset Chat"):
-#     st.session_state.messages = []
-#     st.experimental_rerun()
 
 import streamlit as st
 import requests
