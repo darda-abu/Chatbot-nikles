@@ -67,12 +67,12 @@ def run_scrapper_chain(input):
     retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 6})
     llm=ChatOpenAI(model="gpt-3.5-turbo")
 
-    # history_aware_retriever = create_history_aware_retriever(
-    #     llm, retriever, contextualize_q_prompt
-    # )
-    # question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
+    history_aware_retriever = create_history_aware_retriever(
+        llm, retriever, contextualize_q_prompt
+    )
+    question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
 
-    # rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
+    rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
     
     scrapper_chain = RetrievalQA.from_chain_type(
         llm=llm,
