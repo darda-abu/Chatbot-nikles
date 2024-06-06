@@ -1,5 +1,35 @@
 # Conversational Chatbot
 ![image](https://github.com/darda-abu/Chatbot-nikles/assets/167751588/7b8ec20d-da54-48bf-9b1e-a6ede5d97efb)
+
+
+## Requirements
+### Knowledge source:
+1. SQL file [products.sql](Data\products.sql)
+2. Website data (Scrape using python code.) 
+
+    Web pages to scrape:
+	
+    - https://www.nikles.com/about/ (Nikles in short, History, Philosophy)
+
+	- https://www.nikles.com/technologies/ (technology names and details)
+
+	- https://www.nikles.com/nikles-luxury-finishes/ (all main parts of the page)
+
+	- https://www.nikles.com/news/ (news title and details)
+3. PDF data [Warranty.pdf](Data\Warranty.pdf)
+
+
+### Tasks
+1. Gather all the data from different sources.
+2. Create a knowledge base using any vector database
+3. Use OpenAI/Langchain/Llama index for creating the chatbot
+4. Use FAST API for the backend.
+5. Use Streamlit for the frontend.
+
+
+### Non functional requirements
+1. There shuold be different chains for documents and database queries.
+2. Chatbot Has to be conversational. 
 ## Overview
 
 Welcome to the Conversational Chatbot project! This repository contains the code and resources needed to deploy a fully functional chatbot application. The project is split into two main components: a backend server and a frontend interface.
