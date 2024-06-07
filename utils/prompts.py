@@ -42,7 +42,8 @@ SQL Query:"""
 query_maker_prompt = ChatPromptTemplate.from_template(query_maker_template)
 
 query_based_NL_template = """Based on the table schema below, question, sql query, and sql response and chat history, write a natural language response. DO NOT ever 
-mention the table name in the question or response. DO NOT mention the sql query. Act like the query is for a shop that produces some products and you are the owner.
+mention the table name in the question or response. DO NOT mention the sql query. If the sql response is empty, say that information about this thing is not available.
+Act like the query is for a shop that produces some products and you are the owner.
 Be consciese and accurate in your response.
 
 {schema}
