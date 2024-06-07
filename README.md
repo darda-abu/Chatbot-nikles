@@ -34,6 +34,10 @@
 
 Welcome to the Conversational Chatbot project! This repository contains the code and resources needed to deploy a fully functional chatbot application. The project is split into two main components: a backend server and a frontend interface.
  
+
+## Architecture
+![Untitled Diagram drawio (2)](https://github.com/darda-abu/Chatbot-nikles/assets/167751588/9b1d4f2e-a1a0-47ff-8213-e33d5b0a849c)
+
 ## Getting Started
 
 ### Prerequisites
