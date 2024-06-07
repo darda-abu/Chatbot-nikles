@@ -65,14 +65,18 @@ def make_db(urls, pdf):
 
 
 if __name__ == "__main__":
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("-u", "--url", help = "Urls Path", default="Data/urls.txt")
-    # parser.add_argument("-p", "--pdf", help = "Pdf Path", default="Data/Warranty.pdf")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-u", "--url", help = "Urls Path", default="Data/urls.txt")
+    parser.add_argument("-p", "--pdf", help = "Pdf Path", default="Data/Warranty.pdf")
     # parser.add_argument("-ht", "--host", help = "Host", default="127.0.0.1")
     # parser.add_argument("-n", "--user", help = "User", default="root")
     # parser.add_argument("-ps", "--password", help = "Password", default="")
     # parser.add_argument("-d", "--database", help = "Database", default="products")
     # parser.add_argument("-t", "--table", help = "Table", default="cb_products")
-    # args = parser.parse_args()
+    args = parser.parse_args()
     # db_creds = database(args.host, args.user, args.password, args.database, args.table)
-    make_db("Data/urls.txt", "Data/Warranty.pdf")
+    url_path ="Data/urls.txt" 
+    pdf_path = "Data/Warranty.pdf"
+    if args.url: url_path = args.url
+    if args.pdf: pdf_path = args.pdf
+    make_db(url_path, pdf_path)

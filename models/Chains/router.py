@@ -7,6 +7,15 @@ from langchain_openai import ChatOpenAI
 from models.Chains.sql_chain import run_sql_chain
 from models.Chains.doc_chain import run_doc_chain
 from langchain_core.messages import HumanMessage, AIMessage
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+os.environ["OPENAI_API_KEY"]=os.getenv("OPENAI_API_KEY")
+## Langmith tracking
+os.environ["LANGCHAIN_TRACING_V2"]="true"
+os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
+
 
 def response(input, uri= 'mysql+mysqlconnector://root:@127.0.0.1:3306/products'):
     mysql_uri = uri

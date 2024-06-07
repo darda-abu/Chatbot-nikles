@@ -4,7 +4,14 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI
 from utils.helper import load_chat_history, dump_chat_history
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+os.environ["OPENAI_API_KEY"]=os.getenv("OPENAI_API_KEY")
+## Langmith tracking
+os.environ["LANGCHAIN_TRACING_V2"]="true"
+os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
 
 def run_sql_chain(input,chat_history, uri= 'mysql+mysqlconnector://root:@127.0.0.1:3306/products'):
     mysql_uri = uri
