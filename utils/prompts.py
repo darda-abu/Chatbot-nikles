@@ -29,6 +29,7 @@ qa_prompt = ChatPromptTemplate.from_messages(
 query_maker_template = """Based on the table schema and some chat history below, write a SQL query that would answer the user's question
 follow these rules while making the query
 
+- Only produce SELECT queries.
 - Never produce a query that will delete something from the database.
 - Always limit the output limit to 8
 - If any relevant query cannot be made, make a query that will not generate any data but can be run the database without any error.
