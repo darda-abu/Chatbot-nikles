@@ -4,6 +4,7 @@ langchain_community==0.2.4
 langchain_core==0.2.5
 langchain_openai==0.1.8
 langchain_text_splitters==0.2.1
+mysql-connector
 mysql_connector_repackaged==0.3.1
 pandas==2.2.2
 pydantic==2.7.3
