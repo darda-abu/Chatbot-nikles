@@ -18,12 +18,27 @@ os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
 
 
 def response(input, uri= 'mysql+mysqlconnector://root:@127.0.0.1:3306/products'):
+
+
+
+
+
     mysql_uri = uri
+    # mysql_uri = os.getenv("DATABASE_URL", 'mysql+mysqlconnector://root:@mysql:3306/products')
     db = SQLDatabase.from_uri(mysql_uri)    
     def get_schema(_):
         schema = db.get_table_info()
         return schema
     llm = ChatOpenAI(temperature=0.05)
+
+    rephraser = (
+        RunnablePassthrough.assign(schema=get_schema)
+        | router_prompt
+        |llm
+        |StrOutputParser()
+    )
+
+
     router = (
         RunnablePassthrough.assign(schema=get_schema)
         | router_prompt
@@ -43,9 +58,9 @@ def response(input, uri= 'mysql+mysqlconnector://root:@127.0.0.1:3306/products')
     dump_chat_history(chat_history)
     return answer
 
-if __name__ == "__main__":
-    flush_chat_history()
-    a = response("description of shower heads")
-    b = response("max temperature in warranty")
+# if __name__ == "__main__":
+#     flush_chat_history()
+#     a = response("description of shower heads")
+#     b = response("max temperature in warranty")
 
-    chat_history = load_chat_history()
+#     chat_history = load_chat_history()

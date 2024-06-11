@@ -14,12 +14,14 @@ os.environ["LANGCHAIN_TRACING_V2"]="true"
 os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
 
 def run_sql_chain(input,chat_history, uri= 'mysql+mysqlconnector://root:@127.0.0.1:3306/products'):
+# def run_sql_chain(input,chat_history, uri= 'mysql+mysqlconnector://root:@127.0.0.1:3306/products'):
+    # mysql_uri = os.getenv("DATABASE_URL", 'mysql+mysqlconnector://root:@mysql:3306/products')
     mysql_uri = uri
     db = SQLDatabase.from_uri(mysql_uri)
 
     # db = Database(uri)
     
-    llm = ChatOpenAI(temperature=0.05)
+    llm = ChatOpenAI(temperature=0.5)
 
     def get_schema(_):
         schema = db.get_table_info()
@@ -31,9 +33,12 @@ def run_sql_chain(input,chat_history, uri= 'mysql+mysqlconnector://root:@127.0.0
         | llm.bind(stop=["\nSQLResult:"])
         | StrOutputParser()
     )
-
+    
     def run_query(query):
+        print("query ran: ", query)
         return db.run(query)
+    print(get_schema(None))
+    llm = ChatOpenAI(temperature=0.1)
     
     sql_chain = (
         RunnablePassthrough.assign(query=sql_chain).assign(

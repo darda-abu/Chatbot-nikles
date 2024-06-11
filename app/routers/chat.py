@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from models.models import ChatRequest, ChatResponse
 from models.Chains.router import response
+from fastapi.responses import StreamingResponse
 
 router = APIRouter()
 from utils.helper import flush_chat_history
@@ -11,6 +12,8 @@ async def chat(request: ChatRequest):
     answer = response(request.user_query)
     print(answer)
     return ChatResponse(answer=answer)
+
+#streamresponse
 
 @router.post("/clear")
 async def clear_chat_history():
