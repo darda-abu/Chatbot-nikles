@@ -1,6 +1,6 @@
 from utils.prompts import router_prompt
 from langchain_community.utilities import SQLDatabase
-from utils.helper import load_chat_history, dump_chat_history, flush_chat_history
+from utils.helper import load_chat_history, dump_chat_history
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI

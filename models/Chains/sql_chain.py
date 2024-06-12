@@ -3,7 +3,6 @@ from utils.prompts import  query_maker_prompt, query_based_NL_prompt
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI
-from utils.helper import load_chat_history, dump_chat_history
 import os
 from dotenv import load_dotenv
 
@@ -43,6 +42,6 @@ def run_sql_chain(input,chat_history):
         | query_based_NL_prompt
         | llm
     )
-    
+
     return sql_chain.invoke({"input": input, "chat_history": chat_history}).content
 
