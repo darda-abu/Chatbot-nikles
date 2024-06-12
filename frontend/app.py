@@ -14,40 +14,30 @@ st.html(
         color: rgb(46, 154, 255);
         text-decoration: underline;
     }
-    
-    
 
     
-    div[data-testid="ChatMessageContent"] {
-        background-color: #ffe0b2; /* Light orange for bot messages */
-        color: black;
-    }
-
-    div[data-testid="stChatMessage"] {
-        background-color: #24292e;
-        color: black; /* Adjust this for message text color */
-    }
     .st-emotion-cache-janbn0 {
         flex-direction: row-reverse;
         text-align: right;
+        background-color: #12353b;
+    }
+    .st-emotion-cache-4oy321 {
+        background-color: #002e43;
     }
     
     </style>
 """)
+def set_chat_background(color):
+    return f"""<style>
+        [data-testid="stChaMessage"] {{
+            background-color: {color};
+        }}
+    </style>"""
+
 # Function to display messages in chat bubbles
 def display_messages(messages):
     for msg in messages:
-        # alignment = 'end' if msg['user'] == 'user' else 'start'
 
-
-        # st.markdown(f"""
-        # <div style="display: flex; justify-content: flex-{alignment};">
-        #     <div style="border-radius: 15px; background-color: {'#DCF8C6' if msg['user'] == 'user' else '#E5E5EA'}; color:black; padding: 10px; margin: 5px; max-width: 70%;">
-        #         <p style="margin: 0;">{msg['message']}</p>
-        #         <p style="text-align: right; font-size: 0.7em; margin: 0;">{msg['timestamp']}</p>
-        #     </div>
-        # </div>
-        # """, unsafe_allow_html=True)
         if msg['user'] == 'user':
             with st.chat_message(msg['user'],avatar="👶"):
                 alignment = 'end' if msg['user'] == 'user' else 'start'

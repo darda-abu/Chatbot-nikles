@@ -187,14 +187,19 @@ Follow these rules while making the query
 - If any SELECT query cannot be made for cb_products table, make a query that will NOT generate any data but can be run into the database without any error.
 - If any relevant query cannot be made for cb_products table, make a query that will not generate any data but can be run into the database without any error.
 - Only produce valid queries according to the schema.
+- always generate queries that will use LIKE '%something%', never use '='
 - Only produce SELECT queries.
 - Never produce a query that will delete something from the database.
 - Always limit the output limit to 8
 - Never generate queries that will show product ID.
 - Try to send url of the product when asked about products.
+- when sending url. always send name first then url.
 - Send image_url only if specifically asked for images, on other scenarios, send url.
+- If the question is asking anything from the list, it is from the chat_history. see the chat history and make query from cb_products table.
 - If the Question is asking something like what is the second product, or the first product, it is referencing the chat history, on that case see what was that product in the chat history and generate query for cb_products
 - LED means lights
+
+
 here are some examples: {{query_examples}}
 
 query should search in name or category_names or category_label, features should be searched in tag_names.
@@ -212,6 +217,7 @@ mention the table name in the question or response.
 Follow these rules while writing the response
 - DO NOT mention the sql query. If the sql response is empty, say that information about this thing is not available.
 - show names with urls in markdown format. example - [name](url)
+- never say something like - you can find them [here](url), Always say these are the products[name](url) is these cases
 - Act like the query is for a shop that produces some products and you are the owner.
 - Be consciese and accurate in your response. If you have any image url, you can send it as well.
 - If the question is referencing to a past chat history. you are the AImeassage and the input question is the HumanMeassage. SO respond according to that.
@@ -233,6 +239,7 @@ remember these rules
 
 - DO NOT respond with more than one word.
 - if the input is about warranties, then classify it as `pdf`
+- if the input in referencing the chat history and relevant information can be found in chat history, then classify it as `pdf`, if relevant information cannot be found in chat history, then classify it as `database`.
 - if the input is about products, then classify it as `database`
 - if the input is about details of product types, then classify it as `pdf`
 - if the input is about details of products, then classify it as `database`
