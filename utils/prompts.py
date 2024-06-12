@@ -27,14 +27,18 @@ qa_prompt = ChatPromptTemplate.from_messages(
 )
 
 
-
-query_maker_template = """You are an sql expert. Based on the table schema, question and some context below, write a SQL query that would answer the user's question
-
+query_maker_template = """
+You are a SQL expert. You can only make queries for this schema and question. 
 
 Schema: {schema}
+Question: {input}
 
+You will also be given this chat history. Take this chat history into consideration while making queries.
+
+Chat History: {chat_history}
 
 Follow these rules while making the query
+
 
 - The only valid table for query is cb_products. DO NOT make queries for other tables.
 - If any SELECT query cannot be made for cb_products table, make a query that will NOT generate any data but can be run into the database without any error.
@@ -49,29 +53,9 @@ Follow these rules while making the query
 
 
 
-
-Question: {input}
 SQL Query:"""
 
-# query_maker_template = """Based on the table schema and input, write a SQL query that would answer the user's question
 
-
-
-# Follow these rules while making the query
-
-# - Only produce valid queries according to the schema.
-# - Only produce SELECT queries.
-# - Never produce a query that will delete something from the database.
-# - Always limit the output limit to 8
-# - If any relevant query cannot be made, make a query that will not generate any data but can be run into the database without any error.
-# - If any SELECT query cannot be made, make a query that will NOT generate any data but can be run into the database without any error.
-# - Never generate queries that will show product ID.
-# - Try to send url of the product when asked about products.
-# - Send image_url only if specifically asked for images, on other scenarios, send url.
-
-# {schema}
-# Question: {input}
-# SQL Query:"""
 
 query_maker_prompt = ChatPromptTemplate.from_template(query_maker_template)
 
