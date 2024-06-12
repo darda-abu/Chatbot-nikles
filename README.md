@@ -67,7 +67,7 @@ streamlit run frontend/app.py
 ```
 ## Database
 Make sure that the database is running at `root:@127.0.0.1:3306/products` (or specify in the `env` file) before starting the application.
-## Updating the Database/URLs/Warranty Information
+## Updating  URLs/Warranty Information
 To update the database, URLs, or warranty information, use the following command:
 ```bash
 python Data/loader.py
