@@ -42,7 +42,7 @@ Welcome to the Conversational Chatbot project! This repository contains the code
 ## Architecture
 ![Untitled Diagram drawio (2)](https://github.com/darda-abu/Chatbot-nikles/assets/167751588/9b1d4f2e-a1a0-47ff-8213-e33d5b0a849c)
 
-## Getting Started
+# Getting Started
 
 ### Prerequisites
 
@@ -69,7 +69,7 @@ Ensure the backend server is running before starting the frontend. Then, run:
 streamlit run frontend/app.py
 ```
 ## Database
-Make sure that the database is running at `root:@127.0.0.1:3306/products` (or specify in the `env` file) before starting the application.
+Make sure that the database is running at `root:@127.0.0.1:3306/products` (or specify the uri in the `env` file) before starting the application.
 ## Updating  URLs/Warranty Information
 To update the database, URLs, or warranty information, use the following command:
 ```bash
