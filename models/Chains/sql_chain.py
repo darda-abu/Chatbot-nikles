@@ -13,14 +13,10 @@ os.environ["OPENAI_API_KEY"]=os.getenv("OPENAI_API_KEY")
 os.environ["LANGCHAIN_TRACING_V2"]="true"
 os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
 
-def run_sql_chain(input,chat_history, uri= 'mysql+mysqlconnector://root:@127.0.0.1:3306/products'):
-# def run_sql_chain(input,chat_history, uri= 'mysql+mysqlconnector://root:@127.0.0.1:3306/products'):
-    # mysql_uri = os.getenv("DATABASE_URL", 'mysql+mysqlconnector://root:@mysql:3306/products')
-    mysql_uri = uri
+def run_sql_chain(input,chat_history):
+    mysql_uri = os.getenv("DATABASE_URL", 'mysql+mysqlconnector://root:@127.0.0.1:3306/products')
     db = SQLDatabase.from_uri(mysql_uri)
 
-    # db = Database(uri)
-    
     llm = ChatOpenAI(temperature=0)
 
     def get_schema(_):
@@ -47,6 +43,6 @@ def run_sql_chain(input,chat_history, uri= 'mysql+mysqlconnector://root:@127.0.0
         | query_based_NL_prompt
         | llm
     )
-    # print(i.content for i in chat_history)
+    
     return sql_chain.invoke({"input": input, "chat_history": chat_history}).content
 
