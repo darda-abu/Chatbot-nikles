@@ -1,6 +1,9 @@
 # Conversational Chatbot
-![image](https://github.com/darda-abu/Chatbot-nikles/assets/167751588/7b8ec20d-da54-48bf-9b1e-a6ede5d97efb)
 
+## Example conversation
+![image](https://github.com/darda-abu/Chatbot-nikles/assets/167751588/53844c63-93c1-4f29-8677-d6a5baabb6e9)
+![image](https://github.com/darda-abu/Chatbot-nikles/assets/167751588/7790bb59-1c5a-43df-97a8-fe6334d26e57)
+![image](https://github.com/darda-abu/Chatbot-nikles/assets/167751588/6b23fb37-52cd-4bd2-b3f8-7db118d2ac14)
 
 ## Requirements
 ### Knowledge source:
