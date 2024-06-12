@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 BACKEND_URL = "http://localhost:8000/chat"
-
+st.set_page_config(layout="wide")
 st.html(
 """
     <style>
@@ -15,36 +15,23 @@ st.html(
         text-decoration: underline;
     }
     
-    div[data-testid="stChatMessageContent"] {
-        background-color: white;
-        color: black; # Expander content color
-    } 
     
+
+    
+    div[data-testid="ChatMessageContent"] {
+        background-color: #ffe0b2; /* Light orange for bot messages */
+        color: black;
+    }
+
     div[data-testid="stChatMessage"] {
-        background-color: white;
-        color: black; # Adjust this for expander header color
+        background-color: #24292e;
+        color: black; /* Adjust this for message text color */
     }
     .st-emotion-cache-janbn0 {
         flex-direction: row-reverse;
         text-align: right;
-        background-color: green;
     }
-    .user-message {
-        background-color: #D1E7DD;
-        color: black;
-        border-radius: 10px;
-        padding: 10px;
-        margin: 5px 0;
-        text-align: left;
-    }
-    .bot-message {
-        background-color: #F8D7DA;
-        color: black;
-        border-radius: 10px;
-        padding: 10px;
-        margin: 5px 0;
-        text-align: left;
-    }
+    
     </style>
 """)
 # Function to display messages in chat bubbles
@@ -61,9 +48,30 @@ def display_messages(messages):
         #     </div>
         # </div>
         # """, unsafe_allow_html=True)
-        with st.chat_message(msg['user']):
-            st.markdown(msg['message'])
+        if msg['user'] == 'user':
+            with st.chat_message(msg['user'],avatar="👶"):
+                alignment = 'end' if msg['user'] == 'user' else 'start'
 
+                st.markdown(msg['message'])
+                st.markdown(f"""
+                <div style="display: flex; justify-content: flex-{alignment};">
+                    <div margin: 5px; max-width: 70%;>
+                        <p style="text-align: right; font-size: 0.7em; margin: 0;">{msg['timestamp']}</p>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+        else:
+            with st.chat_message(msg['user'],avatar="🤖"):
+                alignment = 'end' if msg['user'] == 'user' else 'start'
+
+                st.markdown(msg['message'])
+                st.markdown(f"""
+                <div style="display: flex; justify-content: flex-{alignment};">
+                    <div margin: 5px; max-width: 70%;>
+                        <p style="text-align: right; font-size: 0.7em; margin: 0;">{msg['timestamp']}</p>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
 
 
 # Initialize session state for messages if it doesn't exist
@@ -79,7 +87,7 @@ display_messages(st.session_state.messages)
 
 # Input for new message
 with st.form(key='message_form'): 
-    cols = st.columns([6, 1, 2])
+    cols = st.columns([10, 3, 3])
     with cols[0]:
         message = st.text_area("Ask Something", key='message', height=5)
     with cols[1]:
