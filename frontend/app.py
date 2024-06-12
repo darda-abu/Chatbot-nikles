@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 BACKEND_URL = "http://localhost:8000/chat"
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 st.html(
 """
     <style>
@@ -82,12 +82,12 @@ if 'messages' not in st.session_state:
 st.title("Messenger Interface")
 
 # Message display area
-st.subheader("Chat Messages")
+st.subheader("Hello There!")
 display_messages(st.session_state.messages)
 
 # Input for new message
 with st.form(key='message_form'): 
-    cols = st.columns([10, 3, 3])
+    cols = st.columns([10, 2, 3])
     with cols[0]:
         message = st.text_area("Ask Something", key='message', height=5)
     with cols[1]:

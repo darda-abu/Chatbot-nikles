@@ -22,6 +22,7 @@ def response(input):
     db = SQLDatabase.from_uri(mysql_uri)    
     def get_schema(_):
         schema = db.get_table_info()
+        # schema = schema.split("/*")[0]
         return schema
     llm = ChatOpenAI(temperature=0.05)
 
@@ -43,3 +44,13 @@ def response(input):
 
     dump_chat_history(chat_history)
     return answer
+
+# if __name__ == "__main__":
+#     mysql_uri = os.getenv("DATABASE_URL", 'mysql+mysqlconnector://root:@127.0.0.1:3306/products')
+#     db = SQLDatabase.from_uri(mysql_uri)    
+#     def get_schema(_):
+#         schema = db.get_table_info()
+#         schema = schema.split("\*")[1]
+#         return schema
+#     print(get_schema(None))
+    
